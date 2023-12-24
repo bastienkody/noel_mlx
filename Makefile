@@ -1,5 +1,5 @@
 ###		DIRECTORY		###
-HEADER		=	./inc/cub3D.h
+HEADER		=	./inc/noel.h
 BUILD_DIR	=	./build
 SRC_DIR 	=	src/
 PRINT_DIR	=	printer/
