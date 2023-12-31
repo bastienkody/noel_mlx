@@ -1,23 +1,20 @@
 ###		DIRECTORY		###
-HEADER		=	./inc/noel.h
+HEADER		=	noel.h
 BUILD_DIR	=	./build
 SRC_DIR 	=	src/
 PRINT_DIR	=	printer/
 DISP_DIR	=	display/
+vpath %.h ./inc
+vpath %.c ./src ./src/${PRINT_DIR} ./src/${DISP_DIR}
 
 ###		SOURCE FILES		###
-PRINT_NAME	=	error.c
+PRINT_NAME	=	
 DISP_NAME	=	init.c\
 				image_utils.c\
 				drawers.c\
 				hooks.c\
 
-PRINT_SRC	=	$(addprefix ${PRINT_DIR}, ${PRINT_NAME})
-DISP_SRC	=	$(addprefix ${DISP_DIR}, ${DISP_NAME})
-
-SRCS_NAME 	=	main.c ${PRINT_SRC} ${DISP_SRC} 
-
-SRCS		=	$(addprefix ${SRC_DIR}, ${SRCS_NAME})
+SRCS 	=	main.c error.c ${DISP_NAME} 
 OBJS		=	${SRCS:%.c=$(BUILD_DIR)/%.o}
 
 ###		DEFINITIONS		###
