@@ -1,24 +1,6 @@
-#include "../../inc/cub3D.h"
+#include "../../inc/noel.h"
 
-int	disp_intro(t_info *info)
-{
-	static int	counter = 0;
-	static int	flag = -1;
-
-	counter++;
-	if (counter > INTRO_COUNTER_MAC_INTEL)
-	{
-		counter = 0;
-		flag *= -1;
-	}
-	if (flag < 0)
-		mlx_put_image_to_window(info->ptr, info->win, info->intro1->ptr, 0, 0);
-	else
-		mlx_put_image_to_window(info->ptr, info->win, info->intro2->ptr, 0, 0);
-	return (0);
-}
-
-void	disp_fireplace(t_info *info)
+int	disp_fireplace(t_info *info)
 {
 	static int			i = 0;				// fire
 	static int			j = 0;				// stars / santa
@@ -72,13 +54,5 @@ void	disp_fireplace(t_info *info)
 		mlx_put_image_to_window(info->ptr, info->win, info->santa[j]->ptr, l_santa_x, l_snata_y);
 		mlx_put_image_to_window(info->ptr, info->win, info->deer[k % 6]->ptr, x_deer, y_deer);
 	}
-}
-
-int	disp_manager(t_info *info)
-{
-	if (info->is_intro)
-		disp_intro(info);
-	else
-		disp_fireplace(info);
-	return (0);
+	return (1);
 }

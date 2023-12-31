@@ -26,8 +26,6 @@ might change hardware to fully enjoy the game :)"
 # define DEERSTEP 12
 
 /*	counters*/
-# define INTRO_COUNTER_MAC_INTEL 30
-# define INTRO_COUNTER_UBU 750
 # define FIRE_COUNTER_MAC_INTEL 5500
 # define S_COUNTER_MAC_INTEL 35000
 # define DEER_COUNTER_MAC_INTEL 7500
@@ -56,9 +54,6 @@ typedef struct s_info
 {
 	void			*ptr;
 	void			*win;
-	t_bool			is_intro;
-	t_img			*intro1;
-	t_img			*intro2;
 	t_img			*bg_default;
 	t_img			*fireplace;
 	t_img			*fire[12];
@@ -70,13 +65,11 @@ typedef struct s_info
 /*	display	*/
 void	run(t_info *info);
 int		init_display(t_info *info);
-int		disp_manager(t_info *info);
+int		disp_fireplace(t_info *info);
 void	update_deers(int *k, int *x_deer);
 
 /*	hooks	*/
-int		close_window(t_info *info);
 int		key_inputs(int keycode, t_info *info);
-int		disp_intro(t_info *info);
 
 /*	img	*/
 t_img	*create_image(void *mlx_ptr, int w, int h);
@@ -86,6 +79,6 @@ t_img	*create_xpm_image(void *mlx_ptr, char *path, int w, int h);
 void	print_error(char *str1, char *str2);
 
 /*	free	*/
-void	end_free(t_info *info);
+int		end_free(t_info *info);
 
 #endif

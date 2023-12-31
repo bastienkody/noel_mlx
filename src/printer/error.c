@@ -1,4 +1,4 @@
-#include "../../inc/cub3D.h"
+#include "../../inc/noel.h"
 
 void	print_error(char *str1, char *str2)
 {

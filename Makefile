@@ -21,7 +21,7 @@ SRCS		=	$(addprefix ${SRC_DIR}, ${SRCS_NAME})
 OBJS		=	${SRCS:%.c=$(BUILD_DIR)/%.o}
 
 ###		DEFINITIONS		###
-NAME		=	kiki_fireplace
+NAME		=	noel_mlx_fireplace
 LIBFT		=	./libs/libft/libft.a
 MLX			=	./libs/mlx/libmlx.a
 XWIN		=	-lXext -lX11

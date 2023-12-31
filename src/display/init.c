@@ -1,4 +1,4 @@
-#include "../../inc/cub3D.h"
+#include "../../inc/noel.h"
 
 static const char	*fire_pathes[12] = 
 {
@@ -42,18 +42,6 @@ static const char	*star_pathes[6] =
 	"map/santa/star2.xpm",
 	"map/santa/star3.xpm",
 };
-
-int	load_textures_intro(t_info *info)
-{
-	info->intro1 = create_xpm_image(info->ptr, \
-		"map/intro/intro_kiki.xpm", WIN_W, WIN_H);
-	info->intro2 = create_xpm_image(info->ptr, \
-		"map/intro/intro_kiki_2.xpm", WIN_W, WIN_H);
-	if (!info->intro1 || !info->intro1->ptr || !info->intro2 || \
-		!info->intro2->ptr)
-		return (print_error(XPM_LOAD, NULL), 0);
-	return (1);
-}
 
 int	load_textures_fire(t_info *info)
 {
@@ -112,13 +100,14 @@ int	init_display(t_info *info)
 	info->ptr = mlx_init();
 	if (!info->ptr)
 		return (print_error(BAD_INI, NULL), 0);
-	info->win = mlx_new_window(info->ptr, WIN_W, WIN_H, "Kiki's fireplace");
+	info->win = mlx_new_window(info->ptr, WIN_W, WIN_H, "Noel mlx fireplace");
 	if (!info->win)
 		return (print_error(BAD_WIN, NULL), 0);
-	info->is_intro = true;
-	if (!load_textures_intro(info) || !load_textures_fire(info) || \
-		!load_textures_santa(info) || !load_textures_stars(info) || \
-		!load_textures_fireplace(info) || !load_textures_reindeer(info))
+	if (!load_textures_fire(info) || \
+		!load_textures_santa(info) || \
+		!load_textures_stars(info) || \
+		!load_textures_fireplace(info) || \
+		!load_textures_reindeer(info))
 		return (0);
 	return (1);
 }
@@ -128,7 +117,7 @@ void	run(t_info *info)
 	if (!init_display(info))
 		return ;
 	mlx_key_hook(info->win, &key_inputs, info);
-	mlx_hook(info->win, 17, 0, &close_window, info);
-	mlx_loop_hook(info->ptr, &disp_manager, info);
+	mlx_hook(info->win, 17, 0, &end_free, info);
+	mlx_loop_hook(info->ptr, &disp_fireplace, info);
 	mlx_loop(info->ptr);
 }

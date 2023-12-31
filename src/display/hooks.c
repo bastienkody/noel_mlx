@@ -1,19 +1,10 @@
-#include "../../inc/cub3D.h"
-
-int	close_window(t_info *info)
-{
-	end_free(info);
-	return (1);
-}
+#include "../../inc/noel.h"
 
 int	key_inputs(int keycode, t_info *info)
 {
-	ft_fprintf(1, "keycode:%i\n", keycode);
-	if (info->is_intro)
-		if (keycode == 65293)
-			info->is_intro = false;
+	//ft_fprintf(1, "keycode:%i\n", keycode);
 	if (keycode == XK_Escape || keycode == XK_q)
-		close_window(info);
+		end_free(info);
 	return (1);
 }
 

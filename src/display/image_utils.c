@@ -1,4 +1,4 @@
-#include "../../inc/cub3D.h"
+#include "../../inc/noel.h"
 
 t_img	*create_image(void *mlx_ptr, int w, int h)
 {

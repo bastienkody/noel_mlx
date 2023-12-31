@@ -1,4 +1,4 @@
-#include "../inc/cub3D.h"
+#include "../inc/noel.h"
 
 void	unload_texture(void *mlx_ptr, t_img *img)
 {
@@ -9,14 +9,12 @@ void	unload_texture(void *mlx_ptr, t_img *img)
 	}
 }
 
-void	end_free(t_info *info)
+int	end_free(t_info *info)
 {
 	int	i = -1;
 
 	if (info->ptr)
 	{
-		unload_texture(info->ptr, info->intro1);
-		unload_texture(info->ptr, info->intro2);
 		unload_texture(info->ptr, info->bg_default);
 		if (info->fireplace)
 			unload_texture(info->ptr, info->fireplace);
@@ -37,7 +35,7 @@ void	end_free(t_info *info)
 		free(info->ptr);
 	}
 	free(info);
-	exit(EXIT_SUCCESS);
+	return (exit(EXIT_SUCCESS), 1);
 }
 
 int	main(__attribute__((unused))int argc, __attribute__((unused))char **argv, __attribute__((unused)) char **envp)
